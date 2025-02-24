@@ -1,3 +1,6 @@
+init:
+	npm install
+
 repl:
 	clj -M:dev:repl
 
