@@ -1,0 +1,5 @@
+@layer components {
+    .ds-combobox {
+        @apply bg-green-500;
+    }
+}

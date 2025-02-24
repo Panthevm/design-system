@@ -1,0 +1,23 @@
+@import "tailwindcss" source(none);
+@import "./button/style.css";
+@import "./combobox/style.css";
+
+@layer base {
+    body {
+        @apply text-(--color-elements-readable);
+    }
+}
+
+/* TODO: Sync with Figma tokens */
+@theme {
+    --default-font-family: "Inter", "sans-serif";
+    --color-surface-0: #FFF;
+    --color-border-default: #CCCED3;
+    --color-elements-readable: #1D2331;
+    --color-elements-assistive: #717684;
+    --color-border-XS-regular-hover: #86B5EF;
+    --color-separator: #EBECEE;
+    --corner-corner-m: 6px;
+    --corner-corner-s: 4px;
+    --spacing-x1: 8px;
+}

@@ -1,0 +1,5 @@
+[:html
+ [:head
+  [:link {:rel "stylesheet" :href "public/design_system.css"}]]
+ [:div
+  (design-system.core/e-button-secondary {} "Discard")]]

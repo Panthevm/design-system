@@ -1,0 +1,17 @@
+(ns design-system.core
+  (:require
+   [design-system.button.element]
+   [design-system.combobox.element]))
+
+(def e-button-secondary #'design-system.button.element/secondary)
+(def e-combobox         #'design-system.combobox.element/view)
+
+(defn doc [element-ref]
+  (require 'hiccup.core)
+  (require 'clojure.java.io)
+  (require 'clojure.java.browse)
+  (let [element-namespace (-> element-ref meta :ns str)]
+    (-> (str element-namespace ".html")
+        (clojure.java.io/resource)
+        (str)
+        (clojure.java.browse/browse-url))))
