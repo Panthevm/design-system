@@ -1,0 +1,22 @@
+@layer components {
+    .ds-list-items {
+        @apply space-y-[2px] text-(--color-elements-assistive)
+    }
+
+    .ds-list-item {
+        @apply
+        px-3
+        py-1
+        rounded-(--corner-corner-m)
+        cursor-pointer
+        hover:bg-(--color-surface-selected)
+    }
+
+    .ds-list-item[aria-selected='true'] {
+        @apply bg-(--color-surface-selected) text-(--color-elements-readable)
+    }
+
+    .ds-list-item[aria-selected='true'] svg {
+        @apply text-(--color-elements-assistive)
+    }
+}

@@ -1,0 +1,29 @@
+@layer components {
+    .ds-input-wrapper {
+        @apply relative
+    }
+
+    .ds-input-wrapper:has(.ds-input-left) .ds-input {
+        @apply pl-[30px]
+    }
+
+    .ds-input {
+        @apply
+        h-[32px]
+        border
+        border-solid
+        border-(--color-border-default)
+        rounded-(--corner-corner-s);
+    }
+
+
+    .ds-input-left {
+        @apply
+        absolute
+        inset-y-0
+        flex
+        items-center
+        text-(--color-elements-assistive)
+        px-[11px];
+    }
+}

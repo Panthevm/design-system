@@ -1,10 +1,28 @@
 @import "tailwindcss" source(none);
-@import "./button/style.css";
-@import "./combobox/style.css";
+
+@import "./button/style.css";     @source "./button";
+@import "./input/style.css";      @source "./input";
+@import "./list_items/style.css"; @source "./list-items";
+@import "./combobox/style.css";   @source "./combobox";
 
 @layer base {
     body {
-        @apply text-(--color-elements-readable);
+        @apply text-(--color-elements-readable) text-[14px];
+    }
+}
+
+@layer components {
+    .ds-text-button {
+        font-family: Inter;
+        font-weight: 600;
+    }
+    .ds-text-value {
+        font-family: Inter;
+        font-weight: 400;
+    }
+
+    .ds-preload {
+        @apply animate-pulse bg-gray-100 h-[32px]
     }
 }
 
@@ -12,6 +30,7 @@
 @theme {
     --default-font-family: "Inter", "sans-serif";
     --color-surface-0: #FFF;
+    --color-surface-selected: #EBECEE;
     --color-border-default: #CCCED3;
     --color-elements-readable: #1D2331;
     --color-elements-assistive: #717684;

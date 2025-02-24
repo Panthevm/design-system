@@ -1,5 +1,6 @@
 /node_modules
 package-lock.json
+resources/public/design_system.css
 
 .DS_Store
 .idea

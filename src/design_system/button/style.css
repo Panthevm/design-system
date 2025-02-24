@@ -1,5 +1,23 @@
 @layer components {
     .ds-button {
-        @apply bg-red-500
+        @apply cursor-pointer flex items-center text-left;
+    }
+    .ds-button-content {
+        @apply w-full;
+    }
+    .ds-button:has(.ds-button-right) {
+        @apply justify-end;
+    }
+
+    .ds-button-secondary {
+        @apply
+        h-9
+        px-6
+        py-2
+        border
+        border-solid
+        border-(--color-border-default)
+        rounded-(--corner-corner-m)
+        text-(--color-elements-assistive)
     }
 }
