@@ -22,7 +22,7 @@
     }
 
     .ds-preload {
-        @apply animate-pulse bg-gray-100 h-[32px]
+        @apply animate-pulse bg-gray-100;
     }
 }
 

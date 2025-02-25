@@ -7,38 +7,56 @@
   [attrs]
   (button/secondary
    (merge
-    {:class      "ds-combobox-target ds-text-value"
-     :slot/right design-system.icons/chevron-down}
-    (:attrs/ds-combobox-target attrs))
-   (:slot/selected-value attrs)))
+    {:class         "ds-combobox-target ds-text-value"
+     :aria-expanded (str (boolean (:data/open? attrs)))
+     :slot/right    design-system.icons/chevron-down}
+    (:attrs/target attrs))
+   (:content/target attrs)))
+
+(defn search [attrs]
+  (input/search
+   (merge {:class "ds-combobox-search"}
+          (:attrs/search attrs))))
+
+(defn option-not-found [attrs]
+  [:span.ds-combobox-empty-options (:attrs/options-empty attrs)
+   (:content/options-empty attrs)])
+
+(defn option-preload [attrs]
+  (list-items/item
+   (merge {:class "ds-preload"}
+          (:attrs/option-preload attrs))))
+
+(defn option-item [attrs option]
+  (list-items/item
+   (merge {:class "ds-combobox-option"}
+          (:attrs/option attrs)
+          (:attrs/item option))
+   (:content/item option)))
 
 (defn options [attrs]
-  (let [options            (:dropdown-options attrs)
-        loading?           (:dropdown-loading? attrs)
-        slot-empty-options (:slot/empty-options attrs)]
-    (list-items/view
-     (merge {:class "ds-combobox-list-items"} (:attrs/ds-combobox-list-items attrs))
-     (cond
-       (seq options)
-       (for [option options]
-         (list-items/item (merge (:attrs/ds-combobox-list-item attrs)
-                                 (:attrs option))
-                          (:slot/content option)))
-       loading?
-       (repeat 15 (list-items/item {:class "ds-preload"}))
-       :else
-       [:span.ds-combobox-empty-options slot-empty-options]))))
+  (list-items/view
+   (merge {:class "ds-combobox-list-items"}
+          (:attrs/options attrs))
+   (cond
+     (not-empty (:data/options attrs))
+     (for [option (:data/options attrs)]
+       (option-item attrs option))
+
+     (:data/loading? attrs)
+     (repeat 15 (option-preload attrs))
+
+     :else (option-not-found attrs))))
 
 (defn dropdown [attrs]
-  [:div.ds-combobox-dropdown (:attrs/ds-combobox-dropdown attrs)
-   (input/search (merge {:class "ds-combobox-search"} (:attrs/ds-combobox-search attrs)))
+  [:div.ds-combobox-dropdown (merge {:class "hidden"} (:attrs/dropdown attrs))
+   (search attrs)
    (options attrs)])
 
 (defn view [attrs]
-  [:div.ds-combobox
+  [:div.ds-combobox (:attrs/combobox attrs)
    (target attrs)
-   (when (:dropdown-open? attrs)
-     (dropdown attrs))])
+   (dropdown attrs)])
 
 
 (comment

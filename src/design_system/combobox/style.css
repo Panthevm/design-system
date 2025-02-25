@@ -1,6 +1,6 @@
 @layer components {
     .ds-combobox {
-        @apply relative space-y-1
+        @apply relative
     }
 
     .ds-combobox-target svg {
@@ -10,6 +10,11 @@
     .ds-combobox-target.ds-button {
         @apply w-full px-3 py-1.5 text-inherit
     }
+
+    .ds-combobox-target[aria-expanded='true'] + .ds-combobox-dropdown {
+        @apply !block;
+    }
+
     .ds-combobox-search.ds-input {
         @apply w-full
     }
@@ -17,6 +22,7 @@
     .ds-combobox-dropdown {
         @apply
         border
+        mt-1
         border-solid
         border-(--color-border-default)
         absolute

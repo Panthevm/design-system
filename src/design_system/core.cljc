@@ -4,12 +4,12 @@
    [design-system.button.element]
    [design-system.combobox.element]))
 
+(def e-button-secondary #'design-system.button.element/secondary)
+(def e-combobox         #'design-system.combobox.element/view)
+
 (def i-chevron-down design-system.icons/chevron-down)
 (def i-search       design-system.icons/search)
 (def i-build        design-system.icons/build)
-
-(def e-button-secondary #'design-system.button.element/secondary)
-(def e-combobox         #'design-system.combobox.element/view)
 
 (defn doc [element-ref]
   (require 'hiccup.core)
