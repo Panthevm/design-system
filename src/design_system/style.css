@@ -30,10 +30,12 @@
 @theme {
     --default-font-family: "Inter", "sans-serif";
     --color-surface-0: #FFF;
+    --color-surface-1: #F9F9F9;
     --color-surface-selected: #EBECEE;
     --color-border-default: #CCCED3;
     --color-elements-readable: #1D2331;
     --color-elements-assistive: #717684;
+    --color-elements-disabled: #CCCED3;
     --color-border-XS-regular-hover: #86B5EF;
     --color-separator: #EBECEE;
     --corner-corner-m: 6px;

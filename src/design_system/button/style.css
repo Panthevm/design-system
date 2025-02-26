@@ -2,9 +2,11 @@
     .ds-button {
         @apply cursor-pointer flex items-center text-left;
     }
+
     .ds-button-content {
         @apply w-full;
     }
+
     .ds-button:has(.ds-button-right) {
         @apply justify-end;
     }
@@ -19,5 +21,18 @@
         border-(--color-border-default)
         rounded-(--corner-corner-m)
         text-(--color-elements-assistive)
+    }
+
+    .ds-button-secondary:not(:disabled):hover,
+    .ds-button-secondary:not(:disabled)[data-hovered='true'] {
+        @apply
+        bg-(--color-surface-1)
+        text-(--color-elements-readable);
+    }
+
+    .ds-button-secondary:disabled {
+        @apply
+        cursor-not-allowed
+        text-(--color-elements-disabled)
     }
 }

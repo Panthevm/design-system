@@ -2,5 +2,23 @@
  [:head
   [:link {:rel "stylesheet" :href "https://fonts.cdnfonts.com/css/inter"}]
   [:link {:rel "stylesheet" :href "public/design_system.css"}]]
- [:div {:class "m-5"}
-  (design-system.core/e-button-secondary "Discard")]]
+ [:body
+  [:pre
+   (str {:content/button {:type "hiccup"}
+         :attrs/button   {:type "object"}
+         :data/hovered?  {:type "boolean"}
+         :data/disabled? {:type "boolean"}})]
+  [:div {:class "m-5 flex space-x-5"}
+
+   (design-system.core/e-button-secondary
+    {:content/button "Discard"})
+
+   (design-system.core/e-button-secondary
+    {:content/button "Discard"
+     :data/hovered?  true})
+
+   (design-system.core/e-button-secondary
+    {:content/button "Discard"
+     :attrs/button   {:onclick "console.log('hui')"}
+     :data/disabled?  true})
+   ]]]

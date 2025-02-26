@@ -18,7 +18,8 @@
      :attrs/option          {:type "object"}
      :attrs/option-preload  {:type "object"}
      :attrs/options-empty   {:type "object"}
-     :attrs/options         {:type "object"}})]
+     :attrs/options         {:type "object"}
+     })]
   [:div {:class "m-5 grid grid-cols-[355px_355px_355px_355px_355px_355px_355px] gap-4"}
 
    (design-system.core/e-combobox
@@ -59,17 +60,28 @@
                       {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Appointment"]}
                       {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Device"]}
                       {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Location"]}]})
-   #_(design-system.core/e-combobox
-    {:attrs/combobox               {:onclick "console.log('on-click-ds-combobox')"}
-     :attrs/target        {:onclick "console.log('on-click-ds-combobox-target')"}
-     :attrs/ds-combobox-dropdown      {:onclick "console.log('on-click-ds-combobox-dropdown')"}
-     :attrs/ds-combobox-search        {:onclick "console.log('on-click-ds-combobox-search')" :value "console logs"}
-     :attrs/ds-combobox-list-items    {:onclick "console.log('on-click-ds-combobox-list-items')"}
-     :attrs/ds-combobox-list-item     {:onclick "console.log('on-click-ds-combobox-list-item')"}
-     :attrs/ds-combobox-empty-options {:onclick "console.log('on-click-ds-combobox-empty-options')"}
-     :slot/selected-value             [:span.flex.items-center.gap-1 design-system.core/i-build "Organization"]
-     :dropdown-open?                  true
-     :dropdown-options                [{:slot/content [:span.flex.items-center.gap-1 design-system.core/i-build "Patient"]}
-                                       {:slot/content [:span.flex.items-center.gap-1 design-system.core/i-build "Organization"] :attrs {:aria-selected "true"}}
-                                       {:slot/content [:span.flex.items-center.gap-1 design-system.core/i-build "Encounter"]}]})
-   ]]]
+
+   (design-system.core/e-combobox
+    {:attrs/combobox {:onclick "console.log('combobox')"}
+     :attrs/target   {:onclick "console.log('target')"}
+     :attrs/dropdown {:onclick "console.log('dropdown')"}
+     :attrs/search   {:onclick "console.log('search')" :value "console logs test"}
+     :attrs/option   {:onclick "console.log('option')"}
+     :attrs/options  {:onclick "console.log('options')"}
+     :data/open?     true
+     :data/options   [{:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Patient"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Organization"] :attrs/item {:aria-selected "true"}}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Encounter"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Practitioner"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Observation"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Condition"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Medication"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "MedicationRequest"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "AllergyIntolerance"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Procedure"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "DiagnosticReport"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Immunization"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "CarePlan"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Appointment"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Device"]}
+                      {:content/item [:span.flex.items-center.gap-1 design-system.core/i-build "Location"]}]})]]]

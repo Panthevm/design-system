@@ -1,20 +1,24 @@
 (ns design-system.button.element
   (:require [design-system.utils :as utils]))
 
-(defn view [& args]
-  (let [attrs      (utils/get-element-attributes args)
-        content    (utils/get-element-content args)
-        slot-right (:slot/right attrs)]
-    [:button.ds-button (dissoc attrs :slot/right)
-     (into [:span.ds-button-content] content)
-     (when slot-right [:span.ds-button-right slot-right])]))
+(defn view [params]
+  (let [attrs-button   (:attrs/button params)
+        content-button (:content/button params)
+        attrs-right    (:attrs/right params)
+        content-right  (:content/right params)]
+    [:button.ds-button
+     (cond-> attrs-button
+       (:data/hovered? params)  (assoc :data-hovered "true")
+       (:data/disabled? params) (assoc :disabled "true"))
+     (when content-button
+       [:span.ds-button-content content-button])
+     (when (or attrs-right content-right)
+       [:span.ds-button-right attrs-right content-right])]))
 
-(defn secondary [& args]
-  (let [attrs   (utils/get-element-attributes args)
-        content (utils/get-element-content args)]
-    (apply view
-           (update attrs :class #(utils/merge-classes "ds-button-secondary ds-text-button" %))
-           content)))
+(defn secondary [params]
+  (-> params
+      (update-in [:attrs/button :class] #(utils/merge-classes "ds-button-secondary ds-text-button" %))
+      (view)))
 
 (comment
   (design-system.core/doc #'view)
